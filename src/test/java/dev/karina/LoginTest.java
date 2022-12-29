@@ -16,7 +16,7 @@ public class LoginTest {
     void setUp() throws Exception{
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
         driver = new ChromeDriver();
-        //driver.manage().window().maximize();
+        driver.manage().window().maximize();
         driver.get("https://automationexercise.com/login");
     }
     @AfterEach
