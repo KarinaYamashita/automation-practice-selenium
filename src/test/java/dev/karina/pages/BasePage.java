@@ -9,6 +9,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -18,9 +19,13 @@ public abstract class BasePage {
     private WebDriver driver;
     private Actions action;
     private Select select;  
-
+    private ChromeOptions options;
+    
     public  BasePage() {
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
+        options = new ChromeOptions();
+        options.addArguments("--headless");
+        //driver = new ChromeDriver(options);
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
@@ -88,7 +93,7 @@ public abstract class BasePage {
     }
 
     public void intoIframe(By locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(locator));  
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(locator));  
     }
 
     public void leaveIframe() {
@@ -111,4 +116,13 @@ public abstract class BasePage {
     public void clear(By locator) {
         this.driver.findElement(locator).clear();
     }
+
+    public void closeAds(By iframeLocator, By iframeAdLocator, By adsBtnClose) {
+        intoIframe(iframeLocator);
+        intoIframe(iframeAdLocator);
+        clickWithDelay(adsBtnClose);
+        leaveIframe();
+        leaveIframe();
+    }
+
 }

@@ -9,29 +9,23 @@ public class WomanPage extends BasePage {
     private By productType = By.cssSelector("body > section > div > div.row > div.col-sm-9.padding-right > div > h2");
     private By iframeLocator = By.xpath("/html/ins/div/iframe");
     private By iframeAdLocator = By.xpath("/html/body/div/div/div[2]/iframe");
-    private By adsClose = By.cssSelector("#dismiss-button"); 
+    private By adsBtnClose = By.cssSelector("#dismiss-button"); 
     public void viewDressWoman() {
         if(super.isDisplayed(menuWomanLocator)){
             super.actionMoveToElementClickPerform(menuWomanLocator);
 
             super.findElementWithDelay(submenuDressLocator);
             super.actionMoveToElementClickPerform(submenuDressLocator);
-            closeAds(); 
+            if(isDisplayed(iframeLocator)){
+                closeAds(iframeLocator, iframeAdLocator, adsBtnClose); 
+            }
 
         } else{
             System.out.println("Menu dress not found");
         }
     }
 
-    public void closeAds() {
-        super.intoIframe(iframeLocator);
-        super.intoIframe(iframeAdLocator);
-        clickWithDelay(adsClose);
-        super.leaveIframe();
-        super.leaveIframe();
-
-    }
-
+    
 
     public String getproductType(){
         return super.getText(productType);

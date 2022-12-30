@@ -22,7 +22,7 @@ public class LoginPageTest {
         loginPage.quitWebDriver();
     }
     @Test
-    void test(){
+    void testLoginSuccessfuly(){
         //when
         loginPage.signin();
         //then

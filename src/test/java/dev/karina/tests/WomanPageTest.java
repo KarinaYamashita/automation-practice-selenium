@@ -23,11 +23,12 @@ public class WomanPageTest {
     }
 
     @Test
-    void test(){
+    void testclickSubmenuDressInMenuWoman(){
         //when
         this.womanPage.viewDressWoman();
         
-       Assertions.assertEquals("https://automationexercise.com/category_products/1",this.womanPage.getCurrentUrl());
+        //then
+        Assertions.assertEquals("https://automationexercise.com/category_products/1",this.womanPage.getCurrentUrl());
         Assertions.assertTrue(this.womanPage.getproductType().equalsIgnoreCase("Women - Dress Products"));
         Assertions.assertFalse(this.womanPage.getCurrentUrl().equals(URL));
         
