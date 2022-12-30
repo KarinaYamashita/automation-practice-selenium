@@ -25,8 +25,8 @@ public abstract class BasePage {
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
         options = new ChromeOptions();
         options.addArguments("--headless");
-        //driver = new ChromeDriver(options);
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
+        //driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
 
