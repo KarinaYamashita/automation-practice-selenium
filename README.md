@@ -6,6 +6,8 @@ Esse repositório contém uma aplicação para testes E2E da página: **[Automat
 
 - Actions
 
+- Junit
+
 - Select
 
 - WebDriver

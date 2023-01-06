@@ -99,3 +99,4 @@ public class RegisterPage extends BasePage {
         super.clickWithDelay(btnDeleteAccountLocator);
     }
 }
+
